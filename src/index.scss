@@ -1,1 +1,7 @@
 @import "./scss/variables";
+
+body {
+  background-color: $colorBgDarker;
+  color: $colorText;
+  font-family: 'Roboto', sans-serif;
+}
