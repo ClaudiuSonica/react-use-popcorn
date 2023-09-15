@@ -1,0 +1,19 @@
+@import "../../../scss/variables";
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-block: 1rem;
+
+  & span {
+    font-size: 3.2rem;
+  }
+
+  & h1 {
+    font-size: 2.4rem;
+    color: $white;
+    font-weight: 600;
+  }
+}

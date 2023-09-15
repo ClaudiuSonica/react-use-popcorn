@@ -1,0 +1,11 @@
+@import "../../../scss/variables";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3.2rem;
+  background-color: $colorPrimary;
+  border-radius: 1rem;
+  height: 7.2rem;
+}
