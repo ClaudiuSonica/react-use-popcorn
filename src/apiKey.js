@@ -1,3 +1,3 @@
-const key = "7785bc08";
+const KEY = "7785bc08";
 
-export default key;
+export default KEY;
