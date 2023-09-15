@@ -1,12 +1,8 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import "./MovieList.scss";
-import { tempMovieData } from "../../../data";
 import Movie from "../../atoms/movie/Movie";
-import { useState } from "react";
 
-const MovieList = () => {
-  const [movies, setMovies] = useState(tempMovieData);
-
+const MovieList = ({movies}) => {
   return (
     <ul className="list">
       {movies.map((movie) => (

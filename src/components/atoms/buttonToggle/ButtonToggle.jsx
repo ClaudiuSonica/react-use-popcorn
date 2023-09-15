@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import "./ButtonToggle.scss";
 
-const ButtonToggle = ({isOpen, onClick}) => {
+const ButtonToggle = ({isOpen, toggleOpen}) => {
 
   return (
     <button
-      onClick={onClick}
+      onClick={toggleOpen}
       className="button-toggle">
       {isOpen ? "-" : "+"}
     </button>

@@ -1,19 +1,11 @@
-import ListBox from "../../molecules/listBox/ListBox";
+/* eslint-disable react/prop-types */
 import "./Main.scss";
-import WatchedBox from "../../molecules/watchedBox/WatchedBox";
-import { useState } from "react";
 
-const Main = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleClick = () => {
-    setIsOpen((open) => !open);
-  };
+const Main = ({children}) => {
 
   return (
     <main className="main">
-      <ListBox isOpen={isOpen} onClick={handleClick} />
-      <WatchedBox isOpen={isOpen} onClick={handleClick} />
+      {children}
     </main>
   );
 };
