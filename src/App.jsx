@@ -2,6 +2,7 @@
 import NavBar from "./components/molecules/navBar/NavBar";
 import SearchInput from "./components/atoms/searchInput/SearchInput";
 import NumResults from "./components/atoms/numResults/NumResults";
+import Main from "./components/organisms/main/Main";
 
 
 // const KEY = key;
@@ -14,6 +15,7 @@ const App = () => {
           <NumResults />
         </NavBar>
       </header>
+      <Main />
     </>
   );
 };

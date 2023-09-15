@@ -1,0 +1,13 @@
+@import "../../../scss/variables";
+
+.box {
+  width: 42rem;
+  max-width: 42rem;
+  background-color: $colorBgLighter;
+  border-radius: 0.9rem;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  position: relative;
+}

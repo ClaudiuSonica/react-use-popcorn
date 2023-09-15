@@ -1,12 +1,11 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import "./ButtonToggle.scss";
 
-const ButtonToggle = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const ButtonToggle = ({isOpen, onClick}) => {
 
   return (
     <button
-      onClick={() => setIsOpen((open) => !open)}
+      onClick={onClick}
       className="button-toggle">
       {isOpen ? "-" : "+"}
     </button>
