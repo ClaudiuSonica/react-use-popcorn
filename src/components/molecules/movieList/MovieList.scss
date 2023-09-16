@@ -7,4 +7,17 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  li {
+    cursor: pointer;
+    transition: all .5s;
+  }
+}
+
+.list-movies {
+  li {
+    &:hover {
+      background-color: $colorBgLight;
+    }
+  }
 }

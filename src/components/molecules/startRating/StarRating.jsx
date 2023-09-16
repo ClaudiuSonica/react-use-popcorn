@@ -13,15 +13,6 @@ const starContainerStyle = {
   alignItems: "center",
 };
 
-StarRating.propTypes = {
-  maxRating: PropTypes.number,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  className: PropTypes.string,
-  messages: PropTypes.array,
-  defaultRating: PropTypes.number,
-  onSetRating: PropTypes.func,
-};
 
 const StarRating = ({
   maxRating = 5,
@@ -72,6 +63,16 @@ const StarRating = ({
 };
 
 export default StarRating;
+
+StarRating.propTypes = {
+  maxRating: PropTypes.number,
+  color: PropTypes.string,
+  size: PropTypes.number,
+  className: PropTypes.string,
+  messages: PropTypes.array,
+  defaultRating: PropTypes.number,
+  onSetRating: PropTypes.func,
+};
 
 const Star = ({ onRate, full, onHoverIn, onHoverOut, color, size }) => {
   const starStyle = {
