@@ -1,9 +1,7 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import "./SearchInput.scss";
 
-const SearchInput = () => {
-  const [query, setQuery] = useState("");
-
+const SearchInput = ({query, setQuery}) => {
   return (
     <input
       className="search"

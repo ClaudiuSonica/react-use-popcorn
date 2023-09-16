@@ -19,12 +19,14 @@ const App = () => {
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const query = "matrix";
+  const [query, setQuery] = useState("");
+  const tempQuery = "matrix";
 
   useEffect(() => {
     async function fetchMovies() {
       try {
         setIsLoading(true);
+        setError("");
         const response = await fetch(
           `https://www.omdbapi.com/?s=${query}&apikey=${KEY}`
         );
@@ -34,7 +36,7 @@ const App = () => {
 
         const data = await response.json();
 
-        if (data.Response === "False") throw new Error("Movie not found"); 
+        if (data.Response === "False") throw new Error("Movie not found");
 
         setMovies(data.Search);
       } catch (err) {
@@ -44,14 +46,21 @@ const App = () => {
         setIsLoading(false);
       }
     }
+
+    if (query.length < 3) {
+      setMovies([]);
+      setError("");
+      return;
+    }
+
     fetchMovies();
-  }, []);
+  }, [query]);
 
   return (
     <>
       <header>
         <NavBar>
-          <SearchInput />
+          <SearchInput query={query} setQuery={setQuery} />
           <NumResults movies={movies} />
         </NavBar>
       </header>
