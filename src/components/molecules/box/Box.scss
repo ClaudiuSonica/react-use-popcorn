@@ -1,6 +1,11 @@
 @import "../../../scss/variables";
 
 .box {
+  @media screen and (max-width: $md) {
+    width: 100%;
+    max-width: 100%;
+  }
+
   width: 42rem;
   max-width: 42rem;
   background-color: $colorBgLighter;

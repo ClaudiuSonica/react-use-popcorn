@@ -1,6 +1,11 @@
 @import "../../../scss/variables";
 
 li {
+  @media screen and (max-width: $md) {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
   position: relative;
   display: grid;
   grid-template-columns: 4rem 1fr;

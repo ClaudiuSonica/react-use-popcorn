@@ -1,6 +1,10 @@
 @import "../../../scss/variables";
 
 .summary {
+  @media screen and (max-width: $md) {
+    padding: 1.2rem;
+  }
+
   padding: 2.2rem 3.2rem 1.8rem 3.2rem;
   border-radius: 0.9rem;
   background-color: $colorBgLighter;
@@ -13,6 +17,11 @@
   }
 
   div {
+    @media screen and (max-width: $md) {
+      font-size: 1.2rem;
+      gap: 1rem;
+    }
+
     display: flex;
     align-items: center;
     gap: 2.4rem;

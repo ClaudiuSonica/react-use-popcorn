@@ -4,6 +4,7 @@ import "./SearchInput.scss";
 const SearchInput = ({query, setQuery}) => {
   return (
     <input
+      name="search"
       className="search"
       type="text"
       placeholder="Search movies..."

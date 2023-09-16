@@ -15,6 +15,10 @@
     gap: 1.6rem;
 
     .rating {
+      @media screen and (max-width: $md) {
+        padding: 1.2rem;
+      }
+
       background-color: $colorBgLight;
       border-radius: 0.9rem;
       padding: 2rem 2.4rem;
@@ -70,6 +74,10 @@
 }
 
 .details-overview {
+  @media screen and (max-width: $md) {
+    padding: 1rem;
+  }
+
   width: 100%;
   padding: 2.4rem 3rem;
   background-color: $colorBgLight;

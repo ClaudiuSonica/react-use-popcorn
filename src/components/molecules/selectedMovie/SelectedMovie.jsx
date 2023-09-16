@@ -45,6 +45,20 @@ const SelectedMovie = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   };
 
   useEffect(() => {
+    const callback = (e) => {
+      if (e.key === "Escape") {
+        onCloseMovie();
+      }
+    };
+
+    document.addEventListener("keydown", callback);
+
+    return () => {
+      document.removeEventListener("keydown", callback);
+    };
+  }, [onCloseMovie]);
+
+  useEffect(() => {
     async function getMoviesDetails() {
       setIsLoading(true);
       const response = await fetch(
@@ -57,6 +71,30 @@ const SelectedMovie = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
 
     getMoviesDetails();
   }, [selectedId]);
+
+  useEffect(() => {
+    if (!title) return;
+    document.title = `Movie | ${title}`;
+
+    return () => {
+      document.title = "usePopcorn";
+    };
+  }, [title]);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const desktopWidth = 768;
 
   return (
     <div className="details">
@@ -87,7 +125,7 @@ const SelectedMovie = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
                 <>
                   <StarRating
                     maxRating={10}
-                    size={24}
+                    size={windowWidth < desktopWidth ? 18 : 24}
                     onSetRating={setUserRating}
                   />
                   {userRating > 0 && (

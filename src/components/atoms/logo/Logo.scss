@@ -1,6 +1,10 @@
 @import "../../../scss/variables";
 
 .logo {
+  @media screen and (max-width: $md) {
+    gap: .5rem;
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,10 +12,18 @@
   padding-block: 1rem;
 
   & span {
+    @media screen and (max-width: $md) {
+      font-size: 1.5rem;
+    }
+
     font-size: 3.2rem;
   }
 
   & h1 {
+    @media screen and (max-width: $md) {
+      font-size: 1.3rem;
+    }
+
     font-size: 2.4rem;
     color: $white;
     font-weight: 600;
