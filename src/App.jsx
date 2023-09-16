@@ -11,19 +11,24 @@ import Box from "./components/molecules/box/Box";
 import MovieList from "./components/molecules/movieList/MovieList";
 import WatchedSummary from "./components/molecules/watchedSummary/WatchedSummary";
 import WatchedList from "./components/molecules/watchedList/WatchedList";
+import Loader from "./components/atoms/loader/Loader";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const query = "matrix";
 
   useEffect(() => {
+    setIsLoading(true);
+
     async function fetchMovies() {
       const response = await fetch(
         `https://www.omdbapi.com/?s=${query}&apikey=${KEY}`
       );
       const data = await response.json();
       setMovies(data.Search);
+      setIsLoading(false);
     }
     fetchMovies();
   }, []);
@@ -39,7 +44,7 @@ const App = () => {
 
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {isLoading ? <Loader /> : <MovieList movies={movies} />}
         </Box>
 
         <Box>
