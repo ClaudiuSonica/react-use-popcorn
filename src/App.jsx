@@ -4,8 +4,6 @@ import NavBar from "./components/molecules/navBar/NavBar";
 import SearchInput from "./components/atoms/searchInput/SearchInput";
 import NumResults from "./components/atoms/numResults/NumResults";
 import Main from "./components/organisms/main/Main";
-// import { tempMovieData } from "./data";
-// import { tempWatchedData } from "./data";
 import { useEffect, useState } from "react";
 import Box from "./components/molecules/box/Box";
 import MovieList from "./components/molecules/movieList/MovieList";
@@ -17,11 +15,16 @@ import SelectedMovie from "./components/molecules/selectedMovie/SelectedMovie";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
+  // const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+
+  const [watched, setWatched] = useState(() => {
+    const localWatched = localStorage.getItem("watched");
+    return localWatched ? JSON.parse(localWatched) : [];
+  });
 
   const handleSelectMovie = (id) => {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -33,11 +36,17 @@ const App = () => {
 
   const handleAddWatched = (movie) => {
     setWatched((watched) => [...watched, movie]);
+
+    // localStorage.setItem("watched", JSON.stringify([...watched, movie]));
   };
 
   const handleDeleteWatched = (id) => {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(() => {
     const controller = new AbortController();
