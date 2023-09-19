@@ -4,6 +4,7 @@ import "./SelectedMovie.scss";
 import KEY from "../../../apiKey";
 import StarRating from "../startRating/StarRating";
 import Loader from "../../atoms/loader/Loader";
+import { useKey } from "../../../useKey";
 
 const SelectedMovie = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   const [movie, setMovie] = useState({});
@@ -50,19 +51,7 @@ const SelectedMovie = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
     onCloseMovie();
   };
 
-  useEffect(() => {
-    const callback = (e) => {
-      if (e.key === "Escape") {
-        onCloseMovie();
-      }
-    };
-
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [onCloseMovie]);
+  useKey("Escape", onCloseMovie);
 
   useEffect(() => {
     async function getMoviesDetails() {

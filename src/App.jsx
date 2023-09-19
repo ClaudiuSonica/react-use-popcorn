@@ -12,16 +12,14 @@ import Loader from "./components/atoms/loader/Loader";
 import ErrorMessage from "./components/atoms/errorMessage/ErrorMessage";
 import SelectedMovie from "./components/molecules/selectedMovie/SelectedMovie";
 import { useMovies } from "./useMovies";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 const App = () => {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovies(query);
 
-  const [watched, setWatched] = useState(() => {
-    const localWatched = localStorage.getItem("watched");
-    return localWatched ? JSON.parse(localWatched) : [];
-  });
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   const handleSelectMovie = (id) => {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -38,10 +36,6 @@ const App = () => {
   const handleDeleteWatched = (id) => {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   };
-
-  useEffect(() => {
-    localStorage.setItem("watched", JSON.stringify(watched));
-  }, [watched]);
 
   return (
     <>
